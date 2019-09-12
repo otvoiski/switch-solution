@@ -1,0 +1,11 @@
+{
+    "path": "C:\\TFS\\Energisa\\Sistemas\\TECCOM\\APICOMERCIAL",
+    "microService": "MicroServicos",
+    "webService": "WebServices",
+    "desenvolvimento": {
+        "branch": "D459511"
+    },
+    "homologacao": {
+        "branch": "D549033"
+    }
+}
