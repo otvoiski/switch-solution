@@ -4,7 +4,7 @@ import os
 
 class Ambiente():
     def _loadConfigs(self, arguments):
-        with open('.\\config\\config.json', 'r') as archive:
+        with open('.\\switch-solution\\config\\config.json', 'r') as archive:
             configs = json.load(archive)
 
             # loading #
