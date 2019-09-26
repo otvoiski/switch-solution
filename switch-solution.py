@@ -13,7 +13,7 @@ def loading(argv):
     parser.add_argument("-t", required=False, action='store', dest='type', type=str, default='ws',
                         help='Tipo do sistema: ws - web service, ms - micro service (Default: ws)')
     parser.add_argument("-n", required=True, action='store',
-                        dest='names', type=str, help='Nome do projeto: ex=wsxyz')
+                        dest='name', type=str, help='Nome do projeto: ex=wsxyz')
     return parser.parse_args()
 
 
