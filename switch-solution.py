@@ -8,17 +8,19 @@ from model.ambiente import Ambiente
 def loading(argv):
     # exemplo -a ho -t ws -n WSXYZ
     parser = argparse.ArgumentParser(description="Switch Solution")
-    parser.add_argument("-e", required=True, action='store', dest='enviroment', type=str,
-                        help='Ambiente da branch: ds - desenvolvimento, ho - homologacao')
-    parser.add_argument("-t", required=False, action='store', dest='type', type=str, default='ws',
-                        help='Tipo do sistema: ws - web service, ms - micro service (Default: ws)')
-    parser.add_argument("-n", required=True, action='store',
-                        dest='name', type=str, help='Nome do projeto: ex=wsxyz')
+    parser.add_argument("name", type=str, help='Nome do projeto: ex=wsxyz')
+    parser.add_argument("-ds", "--dev", metavar="", type=bool,
+                        help='Ambiente de Desenvolvimento.', default=False, const=True, nargs="?")
+    parser.add_argument("-ho", "--hom", metavar="", type=bool,
+                        help='Ambiente de Homologação.',  default=False, const=True, nargs="?")
+    parser.add_argument("-pr", "--pro", metavar="", type=bool,
+                        help='Ambiente de Produção.', default=False, const=True, nargs="?")
     return parser.parse_args()
 
 
 def main(argv: None):
     arguments = loading(argv)
+    print(arguments)
     ambiente = Ambiente(arguments)
 
     if ambiente.enviroment != None:
