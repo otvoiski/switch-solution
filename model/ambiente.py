@@ -10,7 +10,11 @@ class Ambiente():
             # loading #
             self.name = arguments.name.upper()
             self._type = str((arguments.name[0] + arguments.name[1])).upper()
-            
+
+            # Correção referente aos ambientes ex: Ambiente mongo que se encontra dentro de micro serviços
+            if(self._type == 'AM'):
+                self._type = "MS"
+
             if arguments.dev == True:
                 self._enviroment = "DS"
             elif arguments.hom == True:
