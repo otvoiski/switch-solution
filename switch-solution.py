@@ -9,12 +9,10 @@ def loading(argv):
     # exemplo -a ho -t ws -n WSXYZ
     parser = argparse.ArgumentParser(description="Switch Solution")
     parser.add_argument("name", type=str, help='Nome do projeto: ex=wsxyz')
-    parser.add_argument("-ds", "--dev", metavar="", type=bool,
-                        help='Ambiente de Desenvolvimento.', default=False, const=True, nargs="?")
-    parser.add_argument("-ho", "--hom", metavar="", type=bool,
-                        help='Ambiente de Homologação.',  default=False, const=True, nargs="?")
-    parser.add_argument("-pr", "--pro", metavar="", type=bool,
-                        help='Ambiente de Produção.', default=False, const=True, nargs="?")
+    parser.add_argument("-ds", "--dev", action="store_true",
+                        help='Ambiente de Desenvolvimento.', default=False)
+    parser.add_argument("-ho", "--hom", action="store_true",
+                        help='Ambiente de Homologação.',  default=False)
     return parser.parse_args()
 
 

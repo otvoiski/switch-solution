@@ -19,8 +19,6 @@ class Ambiente():
                 self._enviroment = "DS"
             elif arguments.hom == True:
                 self._enviroment = "HO"
-            elif arguments.pro == True:
-                self._enviroment = "PR"
             else:
                 self._enviroment = "DS"
 
