@@ -8,7 +8,7 @@ from model.ambiente import Ambiente
 def loading():
     # exemplo -a ho -t ws -n WSXYZ
     parser = argparse.ArgumentParser(description="Switch Solution")
-    parser.add_argument("name", type=str, help='Nome do projeto: ex=wsxyz')
+    parser.add_argument("name", type=str, help='Nome do projeto: ex=wsxyz', nargs="?")
     parser.add_argument("-ds", "--dev", action="store_true",
                         help='Ambiente de Desenvolvimento.', default=False)
     parser.add_argument("-ho", "--hom", action="store_true",
@@ -24,6 +24,10 @@ def main(argv: None):
     if arguments.config == True:
         os.system(".\\switch-solution\\config\\config.json")
         return
+
+    if arguments.name == None:
+        print("name is required.")
+        return 
 
     ambiente = Ambiente(arguments)
 
