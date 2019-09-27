@@ -13,6 +13,8 @@ def loading(argv):
                         help='Ambiente de Desenvolvimento.', default=False)
     parser.add_argument("-ho", "--hom", action="store_true",
                         help='Ambiente de Homologação.',  default=False)
+    parser.add_argument("-i", "--info", action="store_true",
+                        help='Informações do sistema',  default=False)
     return parser.parse_args()
 
 
