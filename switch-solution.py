@@ -20,12 +20,11 @@ def loading(argv):
 
 def main(argv: None):
     arguments = loading(argv)
-    print(arguments)
     ambiente = Ambiente(arguments)
 
     if ambiente.enviroment != None:
         # direct command this is optional, use to be fast!
-        if arguments.enviroment is not None and arguments.name is not None:
+        if arguments.name is not None:
             showProjectScreen(ambiente)
     else:
         pass

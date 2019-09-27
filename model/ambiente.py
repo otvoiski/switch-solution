@@ -9,8 +9,16 @@ class Ambiente():
 
             # loading #
             self.name = arguments.name.upper()
-            self._type = arguments.type.upper()
-            self._enviroment = arguments.enviroment.upper()
+            self._type = str((arguments.name[0] + arguments.name[1])).upper()
+            
+            if arguments.dev == True:
+                self._enviroment = "DS"
+            elif arguments.hom == True:
+                self._enviroment = "HO"
+            elif arguments.pro == True:
+                self._enviroment = "PR"
+            else:
+                self._enviroment = "DS"
 
             self._path = configs["path"]
 
