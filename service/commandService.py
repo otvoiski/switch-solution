@@ -37,7 +37,7 @@ def showProjectScreen(ambiente: Ambiente):
         return False
     
     if not os.path.isdir(ambiente.getFolderProject()):
-        print("Projeto não existe, tente baixar o projeto manualmente.")
+        print("Projeto não existe, tente baixar manualmente.")
         return False
 
     os.system('cls')
