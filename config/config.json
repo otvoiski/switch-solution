@@ -1,11 +1,30 @@
 {
-    "path": "C:\\TFS\\Energisa\\Sistemas\\TECCOM\\APICOMERCIAL",
-    "microService": "MicroServicos",
-    "webService": "WebServices",
-    "desenvolvimento": {
-        "branch": "D460639"
+    "project": {
+        "util": {
+            "path": "C:\\TFS\\Energisa\\Sistemas\\COMUM\\PadraoDotNetCore",
+            "enviroment": {
+                "development": "Trunk",
+                "homologation": "Trunk",
+                "production": "Trunk"
+            }
+        },
+        "apiComercial": {
+            "path": "C:\\TFS\\Energisa\\Sistemas\\TECCOM\\APICOMERCIAL",
+            "enviroment": {
+                "development": "D460639",
+                "homologation": "D460639",
+                "production": "Trunk"
+            }
+        },
+        "wsate": {
+            "path": "C:\\TFS\\Energisa\\Sistemas\\ServicosWeb\\ATENDIMENTO\\DN",
+            "enviroment": {
+                "development": "Trunk",
+                "homologation": "Trunk",
+                "production": "Trunk"
+            }
+        }
     },
-    "homologacao": {
-        "branch": "D459511"
-    }
+    "microService": "MicroServicos",
+    "webService": "WebServices"
 }

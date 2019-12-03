@@ -13,6 +13,8 @@ def loading():
                         help='Ambiente de Desenvolvimento.', default=False)
     parser.add_argument("-ho", "--hom", action="store_true",
                         help='Ambiente de Homologação.',  default=False)
+    parser.add_argument("-pr", "--pro", action="store_true",
+                        help='Ambiente de Produção.',  default=False)
     parser.add_argument("-c", "--config", action="store_true",
                         help='Arquivo de configuração do sistema', default=False)
     return parser.parse_args()
@@ -30,7 +32,7 @@ def main(argv: None):
         return 
 
     ambiente = Ambiente(arguments)
-
+    
     if ambiente.enviroment != None:
         # direct command this is optional, use to be fast!
         if arguments.name is not None:
