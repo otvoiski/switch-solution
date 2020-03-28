@@ -1,6 +1,4 @@
 import os
-from lib.filter import filterBranchs, filterEnviroment, filterDemanda, filterName, filterType
-from lib.command import findFile, getApiPath, getUtilPath
 
 
 class Project(object):
@@ -8,11 +6,10 @@ class Project(object):
         self.__dict__.update(kwargs)
 
     def initProject(self, arguments):
-        # start all atributs
-        self
+        from lib.filter import filterBranchs, filterEnviroment, filterDemanda, filterName, filterType
+        from lib.command import findFile, getApiPath, getUtilPath
 
-        # path default
-
+        self.demanda = None
         self.name = filterName(arguments.name)
         self.type = filterType(self.name)
         self.enviroment = filterEnviroment(arguments)
@@ -45,7 +42,6 @@ class Project(object):
                     # name project
                     str(self.name)
                 )
-                print(self._path)
         else:
             # default util
             self._path = getUtilPath()

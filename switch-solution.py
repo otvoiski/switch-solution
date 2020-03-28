@@ -3,7 +3,8 @@ import argparse
 
 from lib.filter import filterArgument
 from lib.menu import initMenu
-from model.project import Project
+from lib.menu import solutionMenu
+from model.Project import Project
 
 
 def main():
@@ -35,22 +36,10 @@ def main():
         # init object project
         project = Project().initProject(arguments)
 
-        print(project.name)
-        print(project.type)
-        print(project.enviroment)
-        print(project.branch)
-        print(project.demanda)
-
-        # Menu.solutionMenu(project)
+        # carrega o menu da solution
+        solutionMenu(project)
     except Exception as e:
         raise Exception(e.args)
-
-    # ambiente = Ambiente(arguments)
-
-    # try:
-    #     showProjectScreen(ambiente)
-    # except Exception as ex:
-    #     raise Exception('Ocorreu um erro ao mostrar as informações: $s' % (ex))
 
 
 if __name__ == '__main__':
