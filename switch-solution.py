@@ -1,16 +1,24 @@
 import sys
 import argparse
 
-from lib.filter import filterArgument
+from lib.questions import askOptions
+from lib.filter import filterArgument, filterAnswerMenu
 from lib.menu import initMenu
 from lib.menu import solutionMenu
 from model.Project import Project
 
 
 def main():
-    # starter program
-    initMenu()
 
+    from helper.console import Console
+
+    console = Console()
+    console.error('Error xisjadsoi')
+
+    exit()
+
+    # starter program
+    # initMenu()
     # select parse
     parser = argparse.ArgumentParser(description="Switch Solution")
     parser.add_argument(
@@ -38,6 +46,14 @@ def main():
 
         # carrega o menu da solution
         solutionMenu(project)
+
+        # pergunta as possibilidades
+        answer = askOptions()
+
+        # fltra as respostas do menu
+        filterAnswerMenu(answer, project)
+
+        # fim
     except Exception as e:
         raise Exception(e.args)
 

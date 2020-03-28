@@ -66,7 +66,7 @@ class Project(object):
             )
 
         # set full path
-        self._path = findFile(
+        self._fullPath = findFile(
             '*%s.sln' % str(self.name),
             str(self._path)
         )
