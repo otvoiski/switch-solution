@@ -1,4 +1,3 @@
-import sys
 import argparse
 
 from lib.questions import askOptions
@@ -6,20 +5,11 @@ from lib.filter import filterArgument, filterAnswerMenu
 from lib.menu import initMenu
 from lib.menu import solutionMenu
 from model.Project import Project
-
+from __init__ import *
 
 def main():
-
-    from helper.console import Console
-
-    console = Console()
-    console.error('Error xisjadsoi')
-
-    exit()
-
     # starter program
-    # initMenu()
-    # select parse
+    initMenu()
     parser = argparse.ArgumentParser(description="Switch Solution")
     parser.add_argument(
         "name", type=str, help='Nome do projeto: ex=wsxyz', nargs="?")
@@ -33,17 +23,20 @@ def main():
                         help='Busca no diretorio remoto do TFS',  default=False)
     parser.add_argument("-c", "--config", action="store_true",
                         help='Arquivo de configuração do sistema', default=False)
+    parser.add_argument("--debug", action="store_true",
+                        help='Executa o sistema como debug', default=False)
     parser.add_argument("-d", dest="branch", metavar="demanda",
                         type=str, help='Branch na aplicação, -d D445566', nargs="?")
     arguments = parser.parse_args()
 
     try:
+        # init configs
+        setLogging(arguments.debug)
+
         # filter arguments
         filterArgument(arguments)
-
         # init object project
         project = Project().initProject(arguments)
-
         # carrega o menu da solution
         solutionMenu(project)
 
@@ -54,8 +47,8 @@ def main():
         filterAnswerMenu(answer, project)
 
         # fim
-    except Exception as e:
-        raise Exception(e.args)
+    except Exception:
+        logger.exception('Error: ')
 
 
 if __name__ == '__main__':
