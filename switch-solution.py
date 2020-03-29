@@ -3,7 +3,6 @@ import argparse
 from constante import Constante
 from lib.filter import filterAnswerMenu, filterArgument
 from lib.menu import initMenu, solutionMenu
-from lib.questions import askOptions
 from model.Project import Project
 
 # load logger
@@ -48,10 +47,8 @@ def main():
     project = Project().initProject(arguments)
     # carrega o menu da solution
     solutionMenu(project)
-    # pergunta as possibilidades
-    answer = askOptions()
     # fltra as respostas do menu
-    filterAnswerMenu(answer, project)
+    filterAnswerMenu(project)
 
 
 if __name__ == '__main__':
