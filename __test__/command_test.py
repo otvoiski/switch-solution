@@ -11,7 +11,7 @@ class CommandTest(unittest.TestCase):
         result = getDemandas(path, branch)
         self.assertIsNotNone(result)
 
-    def existPath(self):
+    def test_exist_path(self):
         exist_file = None
         self.assertTrue(exist_file)
 
