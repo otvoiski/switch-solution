@@ -1,38 +1,58 @@
-import sys
 import argparse
 
-from service.commandService import *
-from model.ambiente import Ambiente
+from constante import Constante
+from lib.filter import filterAnswerMenu, filterArgument
+from lib.menu import initMenu, solutionMenu
+from model.Project import Project
+
+# load logger
+logger = Constante().getLogger()
 
 
-def loading():
-    # exemplo -a ho -t ws -n WSXYZ
+def argumentsParser():
     parser = argparse.ArgumentParser(description="Switch Solution")
-    parser.add_argument("name", type=str, help='Nome do projeto: ex=wsxyz')
+    parser.add_argument(
+        "name", type=str, help='Nome do projeto: ex=wsxyz', nargs="?")
     parser.add_argument("-ds", "--dev", action="store_true",
                         help='Ambiente de Desenvolvimento.', default=False)
     parser.add_argument("-ho", "--hom", action="store_true",
-                        help='Ambiente de Homologação.',  default=False)
+                        help='Ambiente de Homologação.', default=False)
+    parser.add_argument("-pr", "--pro", action="store_true",
+                        help='Ambiente de Produção.', default=False)
+    parser.add_argument("-t", "--tfs", action="store_true",
+                        help='Busca no diretorio remoto do TFS', default=False)
     parser.add_argument("-c", "--config", action="store_true",
                         help='Arquivo de configuração do sistema', default=False)
-    return parser.parse_args()
+    parser.add_argument("--debug", action="store_true",
+                        help='Executa o sistema como debug', default=False)
+    parser.add_argument("-d", dest="demanda", metavar="demanda", default=None,
+                        type=str, help='Branch na aplicação, -d D445566', nargs="?")
+    arguments = parser.parse_args()
+    return arguments
 
 
-def main(argv: None):
-    arguments = loading()
+def main():
+    # load arguments
+    arguments = argumentsParser()
 
-    if arguments.config == True:
-        os.system(".\\switch-solution\\config\\config.json")
-        return
+    # filter logs
+    if(not arguments.debug):
+        logger.remove()
 
-    ambiente = Ambiente(arguments)
+    # filter arguments
+    filterArgument(arguments)
+    # starter program
+    initMenu()
+    # init object project
+    project = Project().initProject(arguments)
+    # carrega o menu da solution
+    solutionMenu(project)
+    # fltra as respostas do menu
+    filterAnswerMenu(project)
 
-    if ambiente.enviroment != None:
-        # direct command this is optional, use to be fast!
-        if arguments.name is not None:
-            showProjectScreen(ambiente)
-    else:
-        pass
 
-
-main(sys.argv)
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception:
+        logger.exception("")

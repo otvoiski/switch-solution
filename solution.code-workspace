@@ -1,8 +1,15 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+	"folders": [{
+		"path": "."
+	}],
+	"settings": {
+		"editor.formatOnSave": true,
+		"configurations": [{
+			"name": "Python: DEFAULT",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal"
+		}],
+	}
 }

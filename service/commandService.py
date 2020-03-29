@@ -14,7 +14,7 @@ def _openSoluction(folder):
     os.system('start ' + result[0])
 
 
-def _drawMenu(ambiente: Ambiente):
+def _drawMenu(ambiente: Ambiente): 
     print("═════╣ Selecione Opção de abertura ╠═══════")
     print(" Ambiente:                   "+ambiente.enviroment)
     print(" Branch:                     "+ambiente.branch)
@@ -32,11 +32,15 @@ def _drawMenu(ambiente: Ambiente):
 
 
 def showProjectScreen(ambiente: Ambiente):
-    os.system('cls')
-
     if ambiente is None:
         print('Não encontrado.')
-        return
+        return False
+    
+    if not os.path.isdir(ambiente.getFolderProject()):
+        print("Projeto não existe, tente baixar manualmente.")
+        return False
+
+    os.system('cls')
 
     _drawMenu(ambiente)
 
