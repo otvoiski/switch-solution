@@ -12,21 +12,24 @@ class Project:
         from lib.filter import filterBranchs, filterEnviroment, filterDemanda, filterName, filterType
         from lib.command import findFile, getApiPath, getUtilPath
 
-        self.demanda = None
+        self.demanda = arguments.demanda
         self.name = filterName(arguments.name)
-        self.logger.info('Name -> OK')
+        self.logger.success('Name -> OK')
         self.type = filterType(self.name)
-        self.logger.info('Type -> OK')
+        self.logger.success('Type -> OK')
         self.enviroment = filterEnviroment(arguments)
-        self.logger.info('Enviroment -> OK')
+        self.logger.success('Enviroment -> OK')
         self.branch = filterBranchs(self.enviroment, arguments.tfs)
-        self.logger.info('Branch -> OK')
+        self.logger.success('Branch -> OK')
         if type != None:
             # default api
             self._path = getApiPath()
             if(self.enviroment == 'Desenvolvimento'):
-                self.demanda = filterDemanda(self._path, self.branch)
-                self.logger.info('Demanda -> OK')
+                if(arguments.demanda == None):
+                    self.demanda = filterDemanda(
+                        self._path, os.path.join(self.type, self.branch))
+                    
+                self.logger.success('Demanda -> OK')
                 # mount full path
                 self._path = os.path.join(
                     # default api
@@ -55,7 +58,9 @@ class Project:
             # default util
             self._path = getUtilPath()
             if(self.enviroment == 'Desenvolvimento'):
-                self.demanda = filterDemanda(self._path, self.branch)
+                if(arguments.demanda == None):
+                    self.demanda = filterDemanda(self._path, self.branch)
+
                 # mount full path
                 self._path = os.path.join(
                     str(self._path),
@@ -73,12 +78,12 @@ class Project:
                     # enviroment
                     str(self.branch)
                 )
-            self.logger.info('Path -> OK')
+            self.logger.success('Path -> OK')
         # set full path
         self._fullPath = findFile(
             '*%s.sln' % str(self.name),
             str(self._path)
         )
-        self.logger.info('FullPath -> OK')
+        self.logger.success('FullPath -> OK')
         self.logger.success('Project -> OK')
         return self

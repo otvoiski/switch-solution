@@ -22,21 +22,12 @@ def argumentsParser():
                         help='Ambiente de Produção.', default=False)
     parser.add_argument("-t", "--tfs", action="store_true",
                         help='Busca no diretorio remoto do TFS', default=False)
-    parser.add_argument(
-        "-c",
-        "--config",
-        action="store_true",
-        help='Arquivo de configuração do sistema',
-        default=False)
+    parser.add_argument("-c", "--config", action="store_true",
+                        help='Arquivo de configuração do sistema', default=False)
     parser.add_argument("--debug", action="store_true",
                         help='Executa o sistema como debug', default=False)
-    parser.add_argument(
-        "-d",
-        dest="branch",
-        metavar="demanda",
-        type=str,
-        help='Branch na aplicação, -d D445566',
-        nargs="?")
+    parser.add_argument("-d", dest="demanda", metavar="demanda", default=None,
+                        type=str, help='Branch na aplicação, -d D445566', nargs="?")
     arguments = parser.parse_args()
     return arguments
 
@@ -61,6 +52,7 @@ def main():
     answer = askOptions()
     # fltra as respostas do menu
     filterAnswerMenu(answer, project)
+
 
 if __name__ == '__main__':
     try:
