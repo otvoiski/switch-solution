@@ -1,6 +1,6 @@
 import unittest
 
-from lib.command import getDemandas
+from lib.command import existPath, getDemandas
 
 
 class CommandTest(unittest.TestCase):
@@ -12,8 +12,14 @@ class CommandTest(unittest.TestCase):
         self.assertIsNotNone(result)
 
     def test_exist_path(self):
-        exist_file = None
-        self.assertTrue(exist_file)
+        exist_file = 'C:/TFS/Energisa/Sistemas/TECCOM/APICOMERCIAL/MicroServicos/Branches/D462371/MSPAG'
+        result = existPath(exist_file)
+        self.assertTrue(result)
+
+    def test_not_exist_path(self):
+        not_exist_file = 'C:/TFS/Energisa/Sistemas/TECCOM/APICOMERCIAL/WebServices/MSPAG'
+        result = existPath(not_exist_file)
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':
