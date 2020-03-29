@@ -28,7 +28,7 @@ class Project:
                 if(arguments.demanda == None):
                     self.demanda = filterDemanda(
                         self._path, os.path.join(self.type, self.branch))
-                    
+
                 self.logger.success('Demanda -> OK')
                 # mount full path
                 self._path = os.path.join(
