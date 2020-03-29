@@ -21,7 +21,7 @@ class Project:
         self.logger.success('Enviroment -> OK')
         self.branch = filterBranchs(self.enviroment, arguments.tfs)
         self.logger.success('Branch -> OK')
-        if type != None:
+        if self.name != 'UTIL':
             # default api
             self._path = getApiPath()
             if(self.enviroment == 'Desenvolvimento'):
