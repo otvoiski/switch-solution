@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Arquivo Atual",
+            "name": "Python: Solution",
             "type": "python",
             "request": "launch",
             "program": "C:\\Scripts\\switch-solution\\switch-solution.py",
@@ -15,6 +15,13 @@
                 "-ho",
                 "--debug"
             ]
+        },
+        {
+            "name": "Python: Arquivo Atual",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
         }
     ]
 }

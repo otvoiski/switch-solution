@@ -1,9 +1,11 @@
 import os
+from constante import Constante
 
 
-class Project(object):
+class Project:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
+        self.logger = Constante().getLogger()
 
     def initProject(self, arguments):
         from lib.filter import filterBranchs, filterEnviroment, filterDemanda, filterName, filterType
@@ -15,8 +17,8 @@ class Project(object):
         self.enviroment = filterEnviroment(arguments)
         self.branch = filterBranchs(self.enviroment, arguments.tfs)
         if type != None:
-            # default api
-            self._path = getApiPath()
+            # default api            
+            self._path = getApiPath()            
             if(self.enviroment == 'Desenvolvimento'):
                 self.demanda = filterDemanda(self.enviroment)
                 # mount full path
@@ -71,4 +73,5 @@ class Project(object):
             str(self._path)
         )
 
+        self.logger.success('Project -> OK')
         return self

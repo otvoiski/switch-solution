@@ -1,15 +1,39 @@
 {
     "cSpell.enabled": false,
-    "cSpell.language": "en",
-    "cSpell.words": [
-        "Ambiente",
-        "Arquivo",
-        "Busca",
-        "aplicação",
-        "configuração",
-        "demanda",
-        "diretorio",
-        "nargs"
+    "python.pythonPath": "C:\\Users\\oarv\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./__test__",
+        "-p",
+        "*_test.py"
     ],
-    "python.pythonPath": "C:\\Users\\oarv\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.testing.pytestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    /** Enable format on save */
+    "editor.formatOnSave": true,
+    /**
+     * Arguments passed to autopep8, defaults to ["--max-line-length 120"].
+     * See https://github.com/hhatto/autopep8#configuration for more info.
+     */
+    "pyformat.autopep8Args": ["--max-line-length 120"],
+
+    /**
+     * Arguments passed to isort, defaults to [ "-w 120", "-m 2" ].
+     * See https://github.com/timothycrosley/isort#configuring-isort for more info.
+     */
+    "pyformat.isortArgs": ["-w 120", "-m 2"],
+
+    /**
+     * Enable import organization functionality. defaults to true.
+     * You can turn this off if you already have other extensions deals with your import for python files.
+     * The command "pyformat.sortImports" will still be available even this is disabled.
+     */
+    "editor.codeActionsOnSave": {
+        /** Pyformat use it's own code action to prevent confliction with other tools. */
+        "source.organizeImports.pyformat": true
+    },
 }
