@@ -1,4 +1,5 @@
 import os
+
 from constante import Constante
 
 
@@ -13,14 +14,19 @@ class Project:
 
         self.demanda = None
         self.name = filterName(arguments.name)
+        self.logger.info('Name -> OK')
         self.type = filterType(self.name)
+        self.logger.info('Type -> OK')
         self.enviroment = filterEnviroment(arguments)
+        self.logger.info('Enviroment -> OK')
         self.branch = filterBranchs(self.enviroment, arguments.tfs)
+        self.logger.info('Branch -> OK')
         if type != None:
-            # default api            
-            self._path = getApiPath()            
+            # default api
+            self._path = getApiPath()
             if(self.enviroment == 'Desenvolvimento'):
-                self.demanda = filterDemanda(self.enviroment)
+                self.demanda = filterDemanda(self._path, self.branch)
+                self.logger.info('Demanda -> OK')
                 # mount full path
                 self._path = os.path.join(
                     # default api
@@ -44,11 +50,12 @@ class Project:
                     # name project
                     str(self.name)
                 )
+            self.logger.info('Path -> OK')
         else:
             # default util
             self._path = getUtilPath()
             if(self.enviroment == 'Desenvolvimento'):
-                self.demanda = filterDemanda(self.enviroment)
+                self.demanda = filterDemanda(self._path, self.branch)
                 # mount full path
                 self._path = os.path.join(
                     str(self._path),
@@ -57,21 +64,21 @@ class Project:
                     # demanda
                     str(self.demanda)
                 )
-
-            # util solution
-            # mount full path
-            self._path = os.path.join(
-                # default util
-                str(self._path),
-                # enviroment
-                str(self.branch)
-            )
-
+            else:
+                # util solution
+                # mount full path
+                self._path = os.path.join(
+                    # default util
+                    str(self._path),
+                    # enviroment
+                    str(self.branch)
+                )
+            self.logger.info('Path -> OK')
         # set full path
         self._fullPath = findFile(
             '*%s.sln' % str(self.name),
             str(self._path)
         )
-
+        self.logger.info('FullPath -> OK')
         self.logger.success('Project -> OK')
         return self

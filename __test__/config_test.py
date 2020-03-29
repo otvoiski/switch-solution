@@ -1,4 +1,5 @@
 import unittest
+
 from constante import Constante
 
 

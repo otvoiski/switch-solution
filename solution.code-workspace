@@ -3,6 +3,13 @@
 		"path": "."
 	}],
 	"settings": {
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"configurations": [{
+			"name": "Python: DEFAULT",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal"
+		}],
 	}
 }

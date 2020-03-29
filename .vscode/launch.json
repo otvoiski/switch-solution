@@ -2,22 +2,21 @@
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Solution",
+    "version": "0.2.5",
+    "configurations": [{
+            "name": "Python: DEBUG",
             "type": "python",
             "request": "launch",
-            "program": "C:\\Scripts\\switch-solution\\switch-solution.py",
+            "program": "${workspaceFolder}\\switch-solution.py",
             "console": "integratedTerminal",
             "args": [
                 "MSPAG",
-                "-ho",
+                "-ds",
                 "--debug"
             ]
         },
         {
-            "name": "Python: Arquivo Atual",
+            "name": "Python: DEFAULT",
             "type": "python",
             "request": "launch",
             "program": "${file}",

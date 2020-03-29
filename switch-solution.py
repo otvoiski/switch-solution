@@ -1,9 +1,13 @@
 import argparse
+
 from constante import Constante
-from lib.questions import askOptions
-from lib.filter import filterArgument, filterAnswerMenu
+from lib.filter import filterAnswerMenu, filterArgument
 from lib.menu import initMenu, solutionMenu
+from lib.questions import askOptions
 from model.Project import Project
+
+# load logger
+logger = Constante().getLogger()
 
 
 def argumentsParser():
@@ -40,28 +44,26 @@ def argumentsParser():
 def main():
     # load arguments
     arguments = argumentsParser()
-    # load logger
-    logger = Constante().getLogger()
+
     # filter logs
     if(not arguments.debug):
         logger.remove()
 
-    try:
-        # filter arguments
-        filterArgument(arguments)
-        # starter program
-        initMenu()
-        # init object project
-        project = Project().initProject(arguments)
-        # carrega o menu da solution
-        solutionMenu(project)
-        # pergunta as possibilidades
-        answer = askOptions()
-        # fltra as respostas do menu
-        filterAnswerMenu(answer, project)
-    except Exception:
-        logger.exception('Error: ')
-
+    # filter arguments
+    filterArgument(arguments)
+    # starter program
+    initMenu()
+    # init object project
+    project = Project().initProject(arguments)
+    # carrega o menu da solution
+    solutionMenu(project)
+    # pergunta as possibilidades
+    answer = askOptions()
+    # fltra as respostas do menu
+    filterAnswerMenu(answer, project)
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:
+        logger.exception("")
