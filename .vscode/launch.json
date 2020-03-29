@@ -10,10 +10,6 @@
             "program": "${workspaceFolder}\\switch-solution.py",
             "console": "integratedTerminal",
             "args": [
-                "mspag",
-                "-pr",
-                "-d",
-                "D462796",
                 "--debug"
             ]
         },
